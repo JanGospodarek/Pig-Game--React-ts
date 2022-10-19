@@ -1,5 +1,5 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
-interface State {
+export interface State {
   players: {
     id: number;
     score: number;
@@ -9,6 +9,7 @@ interface State {
   winner: any;
   dice: number;
 }
+
 function changePlayer(state: State) {
   state.activePlayer === 0
     ? (state.activePlayer = 1)
@@ -42,7 +43,7 @@ const initialGameState: State = {
   winner: undefined,
   dice: Math.trunc(Math.random() * 6),
 };
-const gameSlice = createSlice({
+export const gameSlice = createSlice({
   name: "game",
   initialState: initialGameState,
   reducers: {
@@ -77,3 +78,4 @@ const store = configureStore({
 });
 export const gameActions = gameSlice.actions;
 export default store;
+export type RootState = ReturnType<typeof store.getState>;

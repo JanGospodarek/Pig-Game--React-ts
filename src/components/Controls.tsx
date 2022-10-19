@@ -1,5 +1,5 @@
 import React from "react";
-import "Controls.module.css";
+import "./Controls.module.css";
 type props = {
   reset: () => void;
   roll: () => void;
